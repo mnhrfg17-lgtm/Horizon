@@ -2,7 +2,7 @@
     "version": "1.0",
     "ai": {
       "provider": "openai",
-      "model": "grok-4.1",
+      "model": "grok-4.1-fast",
       "base_url": "https://api.amux.ai/v1",
       "api_key_env": "OPENAI_API_KEY",
       "temperature": 0.3,
