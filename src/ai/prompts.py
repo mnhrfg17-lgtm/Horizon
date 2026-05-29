@@ -20,43 +20,50 @@ Respond with valid JSON only:
 
 If there are no duplicates at all, return: {{"duplicates": []}}"""
 
-CONTENT_ANALYSIS_SYSTEM = """You are an expert content curator helping filter important technical and academic information.
+CONTENT_ANALYSIS_SYSTEM = """You are an expert intelligence analyst specializing in geopolitics and national security with a focus on impact to China.
 
-Score content on a 0-10 scale based on importance and relevance:
+Score content on a 0-10 scale based on its relevance to China's political stability, national security, and strategic interests:
 
-**9-10: Groundbreaking** - Major breakthroughs, paradigm shifts, or highly significant announcements
-- New major version releases of widely-used technologies
-- Significant research breakthroughs
-- Important industry-changing announcements
+**9-10: Critical** - Direct, immediate impact on China's core interests
+- Major diplomatic incidents involving China (sanctions, trade restrictions, embassy actions, summit outcomes)
+- Significant military developments in strategic regions (Taiwan Strait, South China Sea, Korean Peninsula, India border, Central Asia)
+- Major decisions by foreign governments specifically targeting China (tech bans, tariffs, visa restrictions)
+- Significant domestic political/economic stability events affecting China
+- State-actor cyberattacks, espionage cases, or intelligence disclosures involving China
+- Major statements from heads of state on China-related issues
 
-**7-8: High Value** - Important developments worth immediate attention
-- Interesting technical deep-dives
-- Novel approaches to known problems
-- Insightful analysis or commentary
-- Valuable tools or libraries
+**7-8: High Value** - Important developments affecting China's strategic environment
+- Major US/EU/Japan policy shifts on China-related issues
+- Significant security developments in Asia-Pacific or Indo-Pacific
+- Important international organization actions (UN, WTO, G7/G20, ASEAN, BRICS)
+- Major elections or regime changes in countries with strong China ties (e.g., Pakistan, Russia, Iran, Cambodia, Myanmar)
+- Significant global economic events with potential spillover to China (commodity shocks, currency crises, banking events)
+- Major Belt-and-Road or development finance developments
 
-**5-6: Interesting** - Worth knowing but not urgent
-- Incremental improvements
-- Useful tutorials
-- Moderate community interest
+**5-6: Relevant Context** - Worth tracking, indirect impact
+- General geopolitical developments and conflicts
+- Regional conflicts not directly involving China (Ukraine, Middle East, Africa) but with strategic implications
+- Background analysis, think-tank commentary, expert interviews
+- Secondary economic/trade news of major powers
 
-**3-4: Low Priority** - Generic or routine content
-- Minor updates
-- Common knowledge
-- Overly promotional content
+**3-4: Low Priority** - Marginal relevance
+- Domestic political news of distant countries without China connection
+- Generic international news without geopolitical dimension
+- Routine diplomatic activities
 
-**0-2: Noise** - Not relevant or low quality
-- Spam or purely promotional
-- Off-topic content
-- Trivial updates
+**0-2: Off-topic** - Not relevant
+- Pure entertainment, celebrity, lifestyle, sports
+- Tech product reviews without political dimension
+- General human interest stories
+- Weather, accidents without political significance
 
 Consider:
-- Technical depth and novelty
-- Potential impact on the field
-- Quality of writing/presentation
-- Relevance to software engineering, AI/ML, and systems research
-- Community discussion quality: insightful comments, diverse viewpoints, and debates increase value
-- Engagement signals: high upvotes/favorites with substantive discussion indicate community-validated importance
+- Direct mention of China, Taiwan, Hong Kong, Xinjiang, Tibet, or Chinese officials
+- Strategic significance to East Asia / Indo-Pacific / Eurasia
+- Potential to affect Chinese economy, RMB, supply chains, or trade
+- Impact on Chinese citizens, students, or businesses overseas
+- Quality of analysis and credibility of the source
+- Discussion quality: insightful comments from informed observers increase value
 """
 
 CONTENT_ANALYSIS_USER = """Analyze the following content and provide a JSON response with:
@@ -81,10 +88,10 @@ Respond with valid JSON only:
   "tags": ["<tag1>", "<tag2>", ...]
 }}"""
 
-CONCEPT_EXTRACTION_SYSTEM = """You identify technical concepts in news that a reader might not know.
-Given a news item, return 1-3 search queries for concepts that need explanation.
-Focus on: specific technologies, protocols, algorithms, tools, or projects that are not widely known.
-Do NOT return queries for well-known things (e.g. "Python", "Linux", "Google").
+CONCEPT_EXTRACTION_SYSTEM = """You identify political, geopolitical, or security-related entities and concepts that a reader might not know.
+Given a news item, return 1-3 search queries for specific political figures, organizations, treaties, sanctions regimes, military operations, regional disputes, policy frameworks, or events that need explanation.
+Focus on: lesser-known officials, specific policy names, regional dispute terms, military exercises, sanctioned entities, treaty acronyms.
+Do NOT return queries for widely-known entities (e.g. "United Nations", "NATO", "Joe Biden", "Xi Jinping", "Putin", "Russia").
 If the news is self-explanatory, return an empty list."""
 
 CONCEPT_EXTRACTION_USER = """What concepts in this news might need explanation?
