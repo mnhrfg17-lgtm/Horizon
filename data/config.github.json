@@ -1,135 +1,164 @@
-  {
-    "version": "1.0",
-    "ai": {
-      "provider": "openai",
-      "model": "gpt-5.4-mini",
-      "base_url": "https://api.amux.ai/v1",
-      "api_key_env": "OPENAI_API_KEY",
-      "temperature": 0.3,
-      "max_tokens": 4096,
-      "throttle_sec": 1,
-      "analysis_concurrency": 2,
-      "enrichment_concurrency": 2,
-      "languages": ["zh"]
-    },
-    "email": {
+{
+  "version": "1.0",
+  "ai": {
+    "provider": "openai",
+    "model": "gpt-5.4-mini",
+    "base_url": "https://api.amux.ai/v1",
+    "api_key_env": "OPENAI_API_KEY",
+    "temperature": 0.3,
+    "max_tokens": 4096,
+    "throttle_sec": 1,
+    "analysis_concurrency": 2,
+    "enrichment_concurrency": 2,
+    "languages": [
+      "zh"
+    ]
+  },
+  "email": {
+    "enabled": false,
+    "smtp_server": "smtp.qq.com",
+    "smtp_port": 465,
+    "imap_server": "imap.qq.com",
+    "imap_port": 993,
+    "email_address": "xxx@qq.com",
+    "sender_name": "Horizon Daily",
+    "subscribe_keyword": "SUBSCRIBE",
+    "unsubscribe_keyword": "UNSUBSCRIBE"
+  },
+  "sources": {
+    "github": [],
+    "hackernews": {
       "enabled": false,
-      "smtp_server": "smtp.qq.com",
-      "smtp_port": 465,
-      "imap_server": "imap.qq.com",
-      "imap_port": 993,
-      "email_address": "xxx@qq.com",
-      "sender_name": "Horizon Daily",
-      "subscribe_keyword": "SUBSCRIBE",
-      "unsubscribe_keyword": "UNSUBSCRIBE"
+      "fetch_top_stories": 0,
+      "min_score": 100
     },
-    "sources": {
-      "github": [
-        {
-          "type": "repo_releases",
-          "owner": "astral-sh",
-          "repo": "uv",
-          "enabled": true
-        },
-        {
-          "type": "repo_releases",
-          "owner": "anthropics",
-          "repo": "claude-code",
-          "enabled": true
-        }
-      ],
-      "hackernews": {
+    "rss": [
+      {
+        "name": "BBC China",
+        "url": "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml",
         "enabled": true,
-        "fetch_top_stories": 30,
-        "min_score": 150
+        "category": "china"
       },
-      "rss": [
-        {
-          "name": "Simon Willison (AI)",
-          "url": "https://simonwillison.net/atom/everything/",
-          "enabled": true,
-          "category": "ai-tools"
-        },
-        {
-          "name": "OpenAI Blog",
-          "url": "https://openai.com/news/rss.xml",
-          "enabled": true,
-          "category": "ai-news"
-        },
-        {
-          "name": "Anthropic News",
-          "url": "https://www.anthropic.com/news/rss.xml",
-          "enabled": true,
-          "category": "ai-news"
-        },
-        {
-          "name": "机器之心",
-          "url": "https://www.jiqizhixin.com/rss",
-          "enabled": true,
-          "category": "ai-china"
-        }
-      ],
-      "reddit": {
+      {
+        "name": "BBC World",
+        "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
         "enabled": true,
-        "subreddits": [
-          {
-            "subreddit": "MachineLearning",
-            "enabled": true,
-            "sort": "hot",
-            "time_filter": "day",
-            "fetch_limit": 15,
-            "min_score": 50
-          },
-          {
-            "subreddit": "LocalLLaMA",
-            "enabled": true,
-            "sort": "hot",
-            "time_filter": "day",
-            "fetch_limit": 15,
-            "min_score": 50
-          }
-        ],
-        "users": [],
-        "fetch_comments": 5
+        "category": "world"
       },
-      "twitter": {
-        "enabled": false,
-        "users": [],
-        "fetch_limit": 0,
-        "fetch_reply_text": false,
-        "max_replies_per_tweet": 0,
-        "max_tweets_to_expand": 0,
-        "reply_min_likes": 0
-      },
-      "openbb": {
-        "enabled": false,
-        "fetch_filings": false,
-        "filings_provider": "sec",
-        "watchlists": []
-      },
-      "ossinsight": {
+      {
+        "name": "BBC Asia",
+        "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml",
         "enabled": true,
-        "period": "past_24_hours",
-        "languages": ["All", "Python", "TypeScript"],
-        "keywords": [],
-        "min_stars": 50,
-        "max_items": 20
+        "category": "asia"
+      },
+      {
+        "name": "Al Jazeera English",
+        "url": "https://www.aljazeera.com/xml/rss/all.xml",
+        "enabled": true,
+        "category": "world"
+      },
+      {
+        "name": "The Diplomat",
+        "url": "https://thediplomat.com/feed/",
+        "enabled": true,
+        "category": "asia-pacific"
+      },
+      {
+        "name": "South China Morning Post (HK/China)",
+        "url": "https://www.scmp.com/rss/91/feed",
+        "enabled": true,
+        "category": "china"
+      },
+      {
+        "name": "Foreign Policy",
+        "url": "https://foreignpolicy.com/feed/",
+        "enabled": true,
+        "category": "geopolitics"
+      },
+      {
+        "name": "Reuters World",
+        "url": "https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+        "enabled": true,
+        "category": "world"
       }
+    ],
+    "reddit": {
+      "enabled": true,
+      "subreddits": [
+        {
+          "subreddit": "geopolitics",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 25,
+          "min_score": 80
+        },
+        {
+          "subreddit": "worldnews",
+          "enabled": true,
+          "sort": "top",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 500
+        },
+        {
+          "subreddit": "IntlScholars",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "week",
+          "fetch_limit": 10,
+          "min_score": 20
+        },
+        {
+          "subreddit": "China",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 30
+        }
+      ],
+      "users": [],
+      "fetch_comments": 5
     },
-    "filtering": {
-      "ai_score_threshold": 5.0,
-      "time_window_hours": 48
-    },
-    "webhook": {
+    "twitter": {
       "enabled": false,
-      "url_env": "HORIZON_WEBHOOK_URL",
-      "delivery": "summary",
-      "overview_position": "first",
-      "platform": "generic",
-      "layout": "markdown",
-      "fallback_layout": "markdown",
-      "languages": null,
-      "request_body": {},
-      "headers": ""
+      "users": [],
+      "fetch_limit": 0,
+      "fetch_reply_text": false,
+      "max_replies_per_tweet": 0,
+      "max_tweets_to_expand": 0,
+      "reply_min_likes": 0
+    },
+    "openbb": {
+      "enabled": false,
+      "fetch_filings": false,
+      "filings_provider": "sec",
+      "watchlists": []
+    },
+    "ossinsight": {
+      "enabled": false,
+      "period": "past_24_hours",
+      "languages": [],
+      "keywords": [],
+      "min_stars": 50,
+      "max_items": 20
     }
+  },
+  "filtering": {
+    "ai_score_threshold": 5.0,
+    "time_window_hours": 48
+  },
+  "webhook": {
+    "enabled": false,
+    "url_env": "HORIZON_WEBHOOK_URL",
+    "delivery": "summary",
+    "overview_position": "first",
+    "platform": "generic",
+    "layout": "markdown",
+    "fallback_layout": "markdown",
+    "languages": null,
+    "request_body": {},
+    "headers": ""
   }
+}
