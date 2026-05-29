@@ -76,8 +76,8 @@
         "category": "geopolitics"
       },
       {
-        "name": "Reuters World",
-        "url": "https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+        "name": "Reuters (via Google News)",
+        "url": "https://news.google.com/rss/search?q=site:reuters.com+world+OR+china+OR+asia&hl=en-US&gl=US&ceid=US:en",
         "enabled": true,
         "category": "world"
       }
@@ -146,7 +146,7 @@
     }
   },
   "filtering": {
-    "ai_score_threshold": 5.0,
+    "ai_score_threshold": 7.5,
     "time_window_hours": 48
   },
   "webhook": {
